@@ -1,0 +1,39 @@
+{
+  "name": "local_content_backend",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^8",
+    "@sap/hana-client": "^2.21.28",
+    "@sap/xsenv": "^5.2.0",
+    "@sap/xssec": "^4.2.1",
+    "express": "^4",
+    "hdb": "^0.19.9",
+    "passport": "^0.7.0"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.6",
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^8",
+    "@sap/hdi-deploy": "4.9.5"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "hana"
+      },
+      "xsuaa": {
+        "kind": "xsuaa"
+      }
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
+    }
+  }
+}

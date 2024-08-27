@@ -1,0 +1,74 @@
+{
+  "xsappname": "local_content_backend",
+ "tenant-mode": "dedicated",
+  "scopes": [
+      {
+          "name": "uaa.user",
+          "description": "UAA"
+      },
+      {
+          "name": "$XSAPPNAME.Read",
+          "description": "Read only Authorization"
+      },
+      {
+          "name": "$XSAPPNAME.Update",
+          "description": "Read and Update Authorization"
+      },
+      {
+          "name": "$XSAPPNAME.Create",
+          "description": "Read and create Authorization"
+      },
+      {
+          "name": "$XSAPPNAME.Delete",
+          "description": "Read and delete Authorization"
+      }
+  ],
+  "role-templates": [
+      {
+          "name": "local_content_backend_Admin",
+          "description": "all roles",
+          "scope-references": [
+              "uaa.user",
+              "$XSAPPNAME.Read",
+              "$XSAPPNAME.Update",
+              "$XSAPPNAME.Create",
+              "$XSAPPNAME.Delete"
+          ]
+      },
+      {
+          "name": "local_content_backend_Display",
+          "description": "Display access only ",
+          "scope-references": [
+              "uaa.user",
+              "$XSAPPNAME.Read"
+          ]
+      },
+      {
+          "name": "local_content_backend_Create",
+          "description": "Display & Create access",
+          "scope-references": [
+              "uaa.user",
+              "$XSAPPNAME.Read",
+              "$XSAPPNAME.Create"
+          ]
+      },
+      {
+          "name": "local_content_backend_Update",
+          "description": "Display & Update access",
+          "scope-references": [
+              "uaa.user",
+              "$XSAPPNAME.Read",
+              "$XSAPPNAME.Update"
+          ]
+      },
+      {
+          "name": "local_content_backend_Delete",
+          "description": "Display & Delete  access ",
+          "scope-references": [
+              "uaa.user",
+              "$XSAPPNAME.Read",
+              "$XSAPPNAME.Delete"
+          ]
+      }
+  ]
+}
