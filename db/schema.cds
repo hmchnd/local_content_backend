@@ -6,32 +6,33 @@ using {
 } from '@sap/cds/common';
 
 entity LC_HeaderT : cuid, managed {
-    vendorID            : String;
-    contractNo          : String;
-    reportingPeriod     : String;
-    status              : String;
-    gwsReport           : Composition of many GoodsWorkServicePurchaseT
-                              on gwsReport.parentKey = $self;
-    lcReport            : Composition of many LC_CalculationReportT
-                              on lcReport.parentKey = $self;
-    contractorReport    : Composition of many ContractorReportT
-                              on contractorReport.parentKey = $self;
-    rokCtznEmpReport    : Composition of many ROK_CTZN_Employee_ReportT
-                              on rokCtznEmpReport.parentKey = $self;
-    employeeInWokReport : Composition of many EmployeeInWKOT
-                              on employeeInWokReport.parentKey = $self;
+    key ID                  : UUID;
+        vendorID            : String;
+        contractNo          : String;
+        reportingPeriod     : String;
+        status              : String;
+        gwsReport           : Composition of many GoodsWorkServicePurchaseT
+                                  on gwsReport.parentKey = $self;
+        lcReport            : Composition of many LC_CalculationReportT
+                                  on lcReport.parentKey = $self;
+        contractorReport    : Composition of many ContractorReportT
+                                  on contractorReport.parentKey = $self;
+        rokCtznEmpReport    : Composition of many ROK_CTZN_Employee_ReportT
+                                  on rokCtznEmpReport.parentKey = $self;
+        employeeInWokReport : Composition of many EmployeeInWKOT
+                                  on employeeInWokReport.parentKey = $self;
 }
 // Report 1 to get the insights from suppliers for their goods work  and service purchase from local for the contract
 
-entity GoodsWorkServicePurchaseT : cuid, managed {
+entity GoodsWorkServicePurchaseT :cuid,  managed {
     key parentKey                     : Association to LC_HeaderT;
         purchaseCode                  : String;
         purchaseMethod                : String;
         contractNumber                : String;
         contractSubject               : String;
-        contractAwardDate             : Date;
-        contractExpireDate            : Date;
-        totalContractValueWOVAT       : Decimal;
+        contractAwardDate             : String;
+        contractExpireDate            : String;
+        totalContractValueWOVAT       : Decimal(15,2);
         legalEntity                   : String;
         country                       : String;
         supplierName                  : String;
@@ -41,13 +42,13 @@ entity GoodsWorkServicePurchaseT : cuid, managed {
         nameOfGoodWorkService         : String;
         UOM                           : String;
         procurementScope              : String;
-        actualAmountExVat             : Decimal;
+        actualAmountExVat             : Decimal(15,2);
         registrationNumber            : String;
         localGoodsManufacturerBin     : String;
         CT_KZ_Cert_Num                : String;
         dateOfCertIssue               : String;
-        localContentInGoodsPercentage : Decimal;
-        localContentInWorkPercentage  : Decimal;
+        localContentInGoodsPercentage : Decimal(15,2);
+        localContentInWorkPercentage  : Decimal(15,2);
 }
 
 
