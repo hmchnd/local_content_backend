@@ -59,11 +59,11 @@ entity LC_CalculationReportT : cuid, managed {
         companyName                   : String;
         nameOfGoodService             : String;
         UOM                           : String;
-        volumeOfPurchase              : Decimal;
-        actualVolumeExVat             : Decimal;
-        localContentInTenge           : Decimal;
-        localContentInGoodsPercentage : Decimal;
-        localContentInWorkPercentage  : Decimal;
+        volumeOfPurchase              : Decimal(15,2);
+        actualVolumeExVat             : Decimal(15,2);
+        localContentInTenge           : Decimal(15,2);
+        localContentInGoodsPercentage : Decimal(15,2);
+        localContentInWorkPercentage  : Decimal(15,2);
         localGoodsManufacturer        : String;
         localGoodsManufacturerBin     : String;
         GWSCode                       : String;
@@ -89,8 +89,8 @@ entity ROK_CTZN_Employee_ReportT : cuid, managed {
     key parentKey                      : Association to LC_HeaderT;
         companyName                    : String;
         reportingPeriod                : String;
-        totalPayrollEmployeePercentage : Decimal;
-        share_of_rok_ctzn_emp_payroll  : Decimal;
+        totalPayrollEmployeePercentage : Decimal(15,2);
+        share_of_rok_ctzn_emp_payroll  : Decimal(15,2);
 }
 
 
