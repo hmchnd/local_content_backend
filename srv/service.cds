@@ -7,4 +7,5 @@ service lc_report_service {
     entity ContractorReportT         as projection on db.ContractorReportT;
     entity ROK_CTZN_Employee_ReportT as projection on db.ROK_CTZN_Employee_ReportT;
     entity EmployeeInWKOT            as projection on db.EmployeeInWKOT;
+    entity FeedbackReviewLogs        as projection on db.FeedbackReviewLogs;
 }
