@@ -21,10 +21,13 @@ entity LC_HeaderT : cuid, managed {
                                   on rokCtznEmpReport.parentKey = $self;
         employeeInWokReport : Composition of many EmployeeInWKOT
                                   on employeeInWokReport.parentKey = $self;
+        comments            : Composition of many FeedbackReviewLogs
+                                  on comments.parentKey = $self;
+
 }
 // Report 1 to get the insights from suppliers for their goods work  and service purchase from local for the contract
 
-entity GoodsWorkServicePurchaseT :cuid,  managed {
+entity GoodsWorkServicePurchaseT : cuid, managed {
     key parentKey                     : Association to LC_HeaderT;
         purchaseCode                  : String;
         purchaseMethod                : String;
@@ -32,7 +35,7 @@ entity GoodsWorkServicePurchaseT :cuid,  managed {
         contractSubject               : String;
         contractAwardDate             : String;
         contractExpireDate            : String;
-        totalContractValueWOVAT       : Decimal(15,2);
+        totalContractValueWOVAT       : Decimal(15, 2);
         legalEntity                   : String;
         country                       : String;
         supplierName                  : String;
@@ -42,13 +45,13 @@ entity GoodsWorkServicePurchaseT :cuid,  managed {
         nameOfGoodWorkService         : String;
         UOM                           : String;
         procurementScope              : String;
-        actualAmountExVat             : Decimal(15,2);
+        actualAmountExVat             : Decimal(15, 2);
         registrationNumber            : String;
         localGoodsManufacturerBin     : String;
         CT_KZ_Cert_Num                : String;
         dateOfCertIssue               : String;
-        localContentInGoodsPercentage : Decimal(15,2);
-        localContentInWorkPercentage  : Decimal(15,2);
+        localContentInGoodsPercentage : Decimal(15, 2);
+        localContentInWorkPercentage  : Decimal(15, 2);
 }
 
 
@@ -59,11 +62,11 @@ entity LC_CalculationReportT : cuid, managed {
         companyName                   : String;
         nameOfGoodService             : String;
         UOM                           : String;
-        volumeOfPurchase              : Decimal(15,2);
-        actualVolumeExVat             : Decimal(15,2);
-        localContentInTenge           : Decimal(15,2);
-        localContentInGoodsPercentage : Decimal(15,2);
-        localContentInWorkPercentage  : Decimal(15,2);
+        volumeOfPurchase              : Decimal(15, 2);
+        actualVolumeExVat             : Decimal(15, 2);
+        localContentInTenge           : Decimal(15, 2);
+        localContentInGoodsPercentage : Decimal(15, 2);
+        localContentInWorkPercentage  : Decimal(15, 2);
         localGoodsManufacturer        : String;
         localGoodsManufacturerBin     : String;
         GWSCode                       : String;
@@ -89,8 +92,8 @@ entity ROK_CTZN_Employee_ReportT : cuid, managed {
     key parentKey                      : Association to LC_HeaderT;
         companyName                    : String;
         reportingPeriod                : String;
-        totalPayrollEmployeePercentage : Decimal(15,2);
-        share_of_rok_ctzn_emp_payroll  : Decimal(15,2);
+        totalPayrollEmployeePercentage : Decimal(15, 2);
+        share_of_rok_ctzn_emp_payroll  : Decimal(15, 2);
 }
 
 
@@ -103,4 +106,9 @@ entity EmployeeInWKOT : cuid, managed {
         totalEmployee            : Integer64;
         rokEmployeeInvolvedInWKO : Integer64;
         foreignEmpInvolvedInWKO  : Integer64;
+}
+
+entity FeedbackReviewLogs : cuid, managed {
+    key parentKey : Association to LC_HeaderT;
+        Comment   : String;
 }
