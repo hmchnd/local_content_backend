@@ -27,6 +27,7 @@ modules:
     requires:
       - name: local_content_backend-db
       - name: local_content_backend-auth
+      - name: local_content_backend-destination
 
   - name: local_content_backend-db-deployer
     type: hdb
@@ -42,7 +43,7 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
-      
+
   - name: local_content_backend-auth
     type: org.cloudfoundry.managed-service
     parameters:
@@ -52,5 +53,8 @@ resources:
       config:
         xsappname: local_content_backend
         tenant-mode: dedicated
-
-
+  - name: local_content_backend-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
