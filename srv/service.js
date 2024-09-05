@@ -19,7 +19,7 @@ module.exports = (srv) => {
             console.log('Request configuration:', emailRequestConfig);
 
             emailRequestConfig.method = 'POST';
-            emailRequestConfig.url = '/v2/odata/v4/catalog/sendmail'; 
+            emailRequestConfig.url = '/odata/v4/catalog/sendmail'; 
             emailRequestConfig.data = {
                 to: to,
                 subject: subject,
